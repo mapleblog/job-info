@@ -4,9 +4,9 @@ export interface Todo {
   description?: string;
   completed: boolean;
   priority: Priority;
-  dueDate?: string; // ISO string format for SQLite compatibility
-  createdAt: string; // ISO string format for SQLite compatibility
-  updatedAt: string; // ISO string format for SQLite compatibility
+  dueDate?: string; // ISO string format
+  createdAt: string; // ISO string format
+  updatedAt: string; // ISO string format
 }
 
 export enum Priority {
