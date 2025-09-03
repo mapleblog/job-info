@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Priority, FilterStatus, TodoFilter, CreateTodoInput } from './types/todo';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import { useTodos } from './hooks/useTodos';
+import { useTodos } from './hooks/useTodos.ts';
 import { Search, Filter, CheckSquare, AlertCircle, Loader2 } from 'lucide-react';
 
 function App() {
