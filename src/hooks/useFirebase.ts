@@ -134,6 +134,8 @@ export const useFirebase = (): UseFirebaseReturn => {
   // Add new todo
   const addTodo = useCallback(async (todoInput: CreateTodoInput) => {
     try {
+      console.log('🔥 Starting addTodo with input:', todoInput);
+      
       // Validate input
       if (!todoInput || typeof todoInput !== 'object') {
         throw new Error('Invalid todo input');
@@ -145,6 +147,7 @@ export const useFirebase = (): UseFirebaseReturn => {
       
       const todosRef = ref(database, 'todos');
       const newTodoRef = push(todosRef);
+      console.log('🔥 Created Firebase reference:', newTodoRef.key);
       
       const now = new Date().toISOString();
       const newTodo: Omit<Todo, 'id'> = {
@@ -161,11 +164,13 @@ export const useFirebase = (): UseFirebaseReturn => {
         newTodo.dueDate = todoInput.dueDate;
       }
 
+      console.log('🔥 About to save todo data:', newTodo);
       await set(newTodoRef, newTodo);
+      console.log('🔥 Successfully saved todo to Firebase!');
       setError(null);
     } catch (err) {
+      console.error('🔥 Firebase add error:', err);
       setError('Failed to add todo');
-      console.error('Firebase add error:', err);
       throw err;
     }
   }, []);
