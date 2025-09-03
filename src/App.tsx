@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Priority, FilterStatus, TodoFilter, CreateTodoInput } from './types/todo';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import { useSQLiteTodos } from './hooks/useSQLiteTodos';
+import { useTodos } from './hooks/useTodos';
 import { Search, Filter, CheckSquare, AlertCircle, Loader2 } from 'lucide-react';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     toggleTodo,
     clearCompleted,
     stats
-  } = useSQLiteTodos();
+  } = useTodos();
 
   const [filter, setFilter] = useState<TodoFilter>({
     status: FilterStatus.ALL,
@@ -59,7 +59,7 @@ function App() {
             <CheckSquare size={32} className="text-blue-600" />
             <h1 className="text-3xl font-bold text-gray-900">Todo App</h1>
           </div>
-          <p className="text-gray-600">Stay organized and get things done with SQLite</p>
+          <p className="text-gray-600">Stay organized and get things done with Firebase</p>
           <div className="flex justify-center space-x-4 mt-2 text-sm text-gray-500">
             <span>Total: {stats.total}</span>
             <span>Completed: {stats.completed}</span>

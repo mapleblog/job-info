@@ -12,7 +12,8 @@
 - 🗑️ 删除任务
 - 🔍 搜索和筛选任务
 - ✔️ 标记任务完成状态
-- 💾 本地数据持久化
+- 💾 云端数据同步
+- 🔄 实时数据更新
 - 📱 响应式设计，支持移动端
 
 ## 🛠️ 技术栈
@@ -26,8 +27,9 @@
 - **Prettier** - 代码格式化工具
 
 ### 数据存储
-- **LocalStorage** - 浏览器本地存储
-- **JSON** - 数据序列化格式
+- **Firebase Realtime Database** - 云端实时数据库
+- **Firebase SDK** - Firebase JavaScript SDK
+- **实时同步** - 多设备数据同步
 
 ## 📁 项目结构
 
@@ -44,12 +46,14 @@ job_info/
 │   │   └── SearchBar.tsx    # 搜索栏组件
 │   ├── hooks/               # 自定义Hook
 │   │   ├── useTodos.ts      # 任务管理Hook
-│   │   └── useLocalStorage.ts # 本地存储Hook
+│   │   └── useFirebase.ts   # Firebase数据库Hook
 │   ├── types/               # TypeScript类型定义
 │   │   └── todo.ts          # Todo相关类型
 │   ├── utils/               # 工具函数
-│   │   ├── storage.ts       # 存储工具
+│   │   ├── firebase.ts      # Firebase配置
 │   │   └── helpers.ts       # 辅助函数
+│   ├── config/              # 配置文件
+│   │   └── firebase.config.ts # Firebase配置文件
 │   ├── styles/              # 样式文件
 │   │   └── index.css        # 全局样式
 │   ├── App.tsx              # 主应用组件
@@ -134,6 +138,7 @@ job_info/
 ### 环境要求
 - Node.js >= 16.0.0
 - npm >= 8.0.0 或 yarn >= 1.22.0
+- Firebase项目配置
 
 ### 安装步骤
 
@@ -265,7 +270,8 @@ npm run type-check
 
 4. **数据管理**
    - 使用自定义Hook管理状态
-   - 本地存储数据同步
+   - Firebase实时数据库集成
+   - 云端数据同步和离线支持
    - 数据验证和错误处理
 
 ## 🤝 贡献指南
